@@ -377,6 +377,16 @@ EXPECT_CALL(someObject, someMethod).Times(2);
 ```c++
 EXPECT_CALL(someObject, someMethod("Value I expect to be passed"));
 ```
+###### Matchers:
+```c++
+More generic expectations (ex. Argument is > 10)
+```
 ### [Setting Behaviour](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+ACTION(ThrowSomeException){
+ throw std::runtime_error("Dummy error");
+}
+EXPECT_CALL(object, someMethod()).WillOnce(ThrowSomeException());
+```
 ### [Cardinality](https://github.com/markdown-it/markdown-it-emoji)
 
