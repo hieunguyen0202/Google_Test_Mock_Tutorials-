@@ -51,9 +51,9 @@ There used to be a set of macros called mock method, followed by the number of a
 ###### MOCK_METHOD`n`(MethodName, ReturnType(paramType1, paramType2...));
 ```
 int sum(int a, int b);
-MOCK_METHOD`2`(sum, int(int, int));
+MOCK_METHOD2(sum, int(int, int));
 void doSomething();
-MOCK_METHOD`0`(doSomething, void());
+MOCK_METHOD0(doSomething, void());
 ```
 
 
