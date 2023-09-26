@@ -92,3 +92,14 @@ int main(int argc, char **argv)
 | ASSERT_TRUE(condition); | EXPECT_TRUE(condition); | condition is true |
 | ASSERT_FALSE(condition);  | EXPECT_FALSE(condition); |condition is not true |
 
+
+| Fatal | Non-Fatal | What it tests |
+| ----- | --------- | ------------- |
+| ASSERT_EQ(x, y); | EXPECT_EQ(x, y); | x == y | 
+| ASSERT_NE(x, y); | EXPECT_NE(x, y); | x != y | 
+| ASSERT_LT(x, y); | EXPECT_LT(x, y); | x < y | 
+| ASSERT_LE(x, y); | EXPECT_LE(x, y); | x <= y | 
+| ASSERT_GT(x, y); | EXPECT_GT(x, y); | x > y | 
+| ASSERT_GE(x, y); | EXPECT_GE(x, y); | x >= y | 
+
+
