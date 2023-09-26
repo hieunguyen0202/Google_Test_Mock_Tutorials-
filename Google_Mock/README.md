@@ -306,6 +306,11 @@ public:
     MockDatabaseConnection(std::string serverAddress);
     MOCK_METHOD(void, connect, ());
     MOCK_METHOD(void, disconnect, ());
+    MOCK_METHOD(float, getSalary, (int), (const));
+    MOCK_METHOD(void, updateSalary, (int, float) );
+
+    MOCK_METHOD(std::vector<Employee>, getSalariesRange, (float), (const));
+    MOCK_METHOD(std::vector<Employee>, getSalariesRange, (float, float), (const));
 
 };
 MockDatabaseConnection::MockDatabaseConnection(std::string serverAddress) : IDatabaseConnection(serverAddress)
