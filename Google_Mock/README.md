@@ -21,5 +21,15 @@ If you are testing a class that does some database operations, you don't want to
  * Mock also respond with predefine data, but thay can also have expectations. That means th at you can tell the test that you are expecting a certain method to be called.
  * And exception to be thrown and so on.
 
+## Mocking Method
+### [Current way](https://github.com/markdown-it/markdown-it-emoji)
+Instead of refefining the methods that you want to override, you just have to use the mock method.
+#### Syntax:
+```
+MOCK_METHOD(ReturnType, MethodName, (Arguments...))
+int sum(int a, int b);
+MOCK_METHOD(int, sum, (int, int));
+```
+
 
 
