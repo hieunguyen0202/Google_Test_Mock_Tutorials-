@@ -695,6 +695,7 @@ MockDatabaseConnection::MockDatabaseConnection(std::string serverAddress) : IDat
 
 TEST(TestEmployeeManager, TestGetSalaryInRange)
 {
+    const int low = 5000, high = 8000;
     std::vector<Employee> returnedVector{
           Employee{1, 5000, "John"},
           Employee{2, 6600, "John"},
@@ -704,8 +705,14 @@ TEST(TestEmployeeManager, TestGetSalaryInRange)
     MockDatabaseConnection dbConnection("DummyAddresss");
     EXPECT_CALL(dbConnection, connect())
     EXPECT_CALL(dbConnection, disconnect());
-    EXPECT_CALL(dbConnection, getSalariesRange(5000, 8000)).WillOnce(Return(returnedVector));
-    
-    ASSERT_THROW(EmployeeManager employeeManager(&dbConnection), std::runtime_error);
+    EXPECT_CALL(dbConnection, getSalariesRange(low, high)).WillOnce(Return(returnedVector));
+    EmployeeManager employeeManager(&dbConnection)
+    std::map<std::string, float> returnedMap = employeeManager.getSalariesBetween(low, high);
+    for (auto it=returnedMap.begin(); it != returnedMap.end(); ++it)
+    {
+       std::cout << it->first << " " << it->second << "\n";
+       ASSERT_THAT(it->second, testing::Gt(low));
+       //ASSERT_THAT(it->second, testing::AllOf(testing::Gt(low), testing::Lt(high)));
+    }
 }
 ```
