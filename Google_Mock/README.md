@@ -36,6 +36,13 @@ MOCK_METHOD(int, sum, (int, int));
 std::map<int, int> foo(float x);
 MOCK_METHOD((std::map<int, int>), foo, (float));
 ```
-
-
+###### MOCK_METHOD(ReturnType, MethodName, (Arguments...), (Specs...))
+* Specs:
+  * const
+  * override
+  * noexcept
+```
+void doSomething() const;
+MOCK_METHOD((void, doSomething, (),(const));
+```
 
