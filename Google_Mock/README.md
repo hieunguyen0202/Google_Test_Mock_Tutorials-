@@ -358,3 +358,15 @@ TEST(TestEmployeeManager, TestConnection)
 }
 
 ```
+
+## Setting Expectations and Behaviour
+### [Setting Expectations](https://github.com/markdown-it/markdown-it-emoji)
+It specifies what happens when a method gets called
+###### ON_CALL `VS` EXPECT_CALL
+```c++
+ON_CALL: sets  the behaviour when a method gets called
+EXPECT_CALL = 
+```
+### [Setting Behaviour](https://github.com/markdown-it/markdown-it-emoji)
+### [Cardinality](https://github.com/markdown-it/markdown-it-emoji)
+
