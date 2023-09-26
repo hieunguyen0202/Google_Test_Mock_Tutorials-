@@ -75,7 +75,7 @@ struct Employee
 };
 ```
 ### [IDatabaseConnection.hpp](https://github.com/markdown-it/markdown-it-emoji)
-```
+```c++
 #pragma once
 #include <string>
 #include <vector>
@@ -101,7 +101,7 @@ protected:
 };
 ```
 ### [IDatabaseConnection.cpp](https://github.com/markdown-it/markdown-it-emoji)
-```
+```c++
 #include "IDatabaseConnection.hpp"
 #include <iostream>
 
@@ -120,7 +120,7 @@ void IDatabaseConnection::disconnect()
 }
 ```
 ### [EmployeeManager.hpp](https://github.com/markdown-it/markdown-it-emoji)
-```
+```c++
 #pragma once
 #include "Employee.hpp"
 #include "IDatabaseConnection.hpp"
@@ -150,7 +150,7 @@ private:
 ```
 
 ### [EmployeeManager.cpp](https://github.com/markdown-it/markdown-it-emoji)
-```
+```c++
 #include "EmployeeManager.hpp"
 #include <map>
 
@@ -197,7 +197,7 @@ std::map<std::string,float> EmployeeManager::getSalariesBetween(float low, float
 
 ```
 ### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
-```
+```c++
 #include <iostream>
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
