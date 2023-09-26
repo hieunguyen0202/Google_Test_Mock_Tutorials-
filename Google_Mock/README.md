@@ -669,3 +669,43 @@ EXPECT_CALL(someObject, someMethod(AllOf(Gt(5), Le(100), Not(7))));
 * Not()
 ##### Can be used in assertions:
 * ASSERT_THAT
+## Matchers (Code Example)
+### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
+##### Test Connection Error:
+```c++
+class MockDatabaseConnection : public IDatabaseConnection
+{
+public:
+    MockDatabaseConnection(std::string serverAddress);
+
+    //MOCK_METHODn n=0,10
+    MOCK_METHOD0(connect, void());
+    MOCK_METHOD0(disconnect, void());
+
+    MOCK_CONST_METHOD1(getSalary, float(int));
+    MOCK_METHOD2(updateSalary, void(int, float) );
+
+    MOCK_CONST_METHOD1(getSalariesRange, std::vector<Employee>(float));
+    MOCK_CONST_METHOD2(getSalariesRange, std::vector<Employee>(float, float));
+};
+MockDatabaseConnection::MockDatabaseConnection(std::string serverAddress) : IDatabaseConnection(serverAddress)
+{
+
+}
+
+TEST(TestEmployeeManager, TestGetSalaryInRange)
+{
+    std::vector<Employee> returnedVector{
+          Employee{1, 5000, "John"},
+          Employee{2, 6600, "John"},
+          Employee{3, 7000, "John"}
+   };
+   
+    MockDatabaseConnection dbConnection("DummyAddresss");
+    EXPECT_CALL(dbConnection, connect())
+    EXPECT_CALL(dbConnection, disconnect());
+    EXPECT_CALL(dbConnection, getSalariesRange(5000, 8000)).WillOnce(Return(returnedVector));
+    
+    ASSERT_THROW(EmployeeManager employeeManager(&dbConnection), std::runtime_error);
+}
+```
