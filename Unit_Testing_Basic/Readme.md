@@ -87,7 +87,8 @@ int main(int argc, char **argv)
 }
 ```
 ## Assertions
-| Fatal | Non-Fatal  | What it tests |
+| Fatal | Non-Fatal | What it tests |
+| ----- | --------- | ------------- |
 | ASSERT_TRUE(condition); | EXPECT_TRUE(condition); | condition is true |
-| ASSERT_FALSE(condition);   | EXPECT_FALSE(condition); |condition is not true |
+| ASSERT_FALSE(condition);  | EXPECT_FALSE(condition); |condition is not true |
 
