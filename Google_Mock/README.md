@@ -633,3 +633,39 @@ TEST(TestEmployeeManager, TestConnectionErrorInvoke)
     ASSERT_THROW(EmployeeManager employeeManager(&dbConnection), std::runtime_error);
 }
 ```
+## Matchers
+##### Exact value:
+```c++
+EXPECT_CALL(someObject, someMethod(5, "Hello"));
+```
+##### Agrument is greater/lower:
+```c++
+EXPECT_CALL(someObject, someMethod(`Gt(5)`));
+```
+##### Similar matchers:
+* Ge
+* Lt
+* Le
+* Eq
+##### Anything("-"):
+```c++
+EXPECT_CALL(someObject, someMethod(6,_));
+```
+##### String matchers:
+```c++
+HasSubstr("Substring")
+```
+##### Can be used for checking against null:
+* isNull()/
+* isNotNull()
+##### Comnining Matchers: 
+```c++
+EXPECT_CALL(someObject, someMethod(AllOf(Gt(5), Le(100), Not(7))));
+//The argument is > 5, <=100 and != 7
+```
+##### Others:
+* AllOf()/AnyOf()
+* AllOfArray()/AnyOffArray()
+* Not()
+##### Can be used in assertions:
+* ASSERT_THAT
