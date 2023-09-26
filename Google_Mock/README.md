@@ -63,7 +63,7 @@ MOCK_CONST_METHOD2(sum, int(int, int));
 ```
 ## Presentation Of Our project
 ### [Employee.hpp](https://github.com/markdown-it/markdown-it-emoji)
-```
+```c++
 #pragma once
 #include <string>
 
