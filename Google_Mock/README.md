@@ -26,7 +26,7 @@ If you are testing a class that does some database operations, you don't want to
 Instead of refefining the methods that you want to override, you just have to use the mock method.
 #### Syntax:
 ```
-MOCK_METHOD(ReturnType, MethodName, (Arguments...))
+##### MOCK_METHOD(ReturnType, MethodName, (Arguments...))
 int sum(int a, int b);
 MOCK_METHOD(int, sum, (int, int));
 ```
