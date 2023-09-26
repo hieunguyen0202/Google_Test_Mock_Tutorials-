@@ -101,7 +101,7 @@ int main(int argc, char **argv)
 | ASSERT_LE(x, y); | EXPECT_LE(x, y); | x <= y | 
 | ASSERT_GT(x, y); | EXPECT_GT(x, y); | x > y | 
 | ASSERT_GE(x, y); | EXPECT_GE(x, y); | x >= y | 
-## Assertions on String (Code Example)
+## Assertions on String - The Wrong Way (Code Example)
 ### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
 ```c++
 #include <iostream>
@@ -145,4 +145,35 @@ int main(int argc, char **argv)
 }
 
 ```
+## Assertions on String - The correct Way (Code Example)
+### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+#include <iostream>
+#include <string>
+#include <gtest/gtest.h>
+#include "LibraryCode.hpp"
 
+TEST(ToUpperTest, BasicTest)
+{
+ //Arrange
+ char inputString[] = "Hello World";
+
+ //Act
+ toUpper(inputString);
+
+ //ASSERT
+ ASSERT_STREQ("HELLO WORLD", inputString);
+ //ASSERT_STRCASEEQ("Hello WORLD", inputString);
+
+ // or the other example:
+ //  std::string str(inputString);
+ //  ASSERT_EQ("HELLO WORLD", str);
+}
+
+int main(int argc, char **argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+
+```
