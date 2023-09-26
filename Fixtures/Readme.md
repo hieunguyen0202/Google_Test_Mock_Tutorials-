@@ -1,5 +1,5 @@
 # Fixture_Tutorials-
-## Mocking Project Resources
+## Test Fixtures
 ### [CMakeLists.txt](https://github.com/markdown-it/markdown-it-emoji)
 ```
 cmake_minimum_required(VERSION 3.13)
