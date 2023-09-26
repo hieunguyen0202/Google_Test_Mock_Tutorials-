@@ -9,7 +9,17 @@ ___
 #### For example:
 If you are testing a class that does some database operations, you don't want to make `real` changes to the database.
 ### [Fake](https://github.com/markdown-it/markdown-it-emoji)
-
+ * Working implementation
+ * Takes a shortcut
+ * Not suitable for production
+ * Example: in-momory database
+### [Stub](https://github.com/markdown-it/markdown-it-emoji)
+ * Is a test doubles that responds with pre-defined data
+ * They don't work outside the test
+ * An example could be if you are replacing a `real` server with a minimal one that responds with predefined data
+### [Mock](https://github.com/markdown-it/markdown-it-emoji)
+ * Mock also respond with predefine data, but thay can also have expectations. That means th at you can tell the test that you are expecting a certain method to be called.
+ * And exception to be thrown and so on.
 
 
 
