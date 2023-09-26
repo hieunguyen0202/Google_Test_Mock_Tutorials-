@@ -346,7 +346,7 @@ int main(int argc, char **argv)
 }
 
 ```
-# Groovy Fundamentals For Testers - Step By Step: https://bosch-bgsv.udemy.com/course/groovy-fundamentals-for-testers-step-by-step/learn/lecture/10301538#overview
-# Test Foundations: https://bosch-bgsv.udemy.com/course/test-automation-foundations/learn/lecture/31350050#overview
-# ISTQB Foundation Level preparation course+1000quiz examples: https://bosch-bgsv.udemy.com/course/istqb-foundation-level-ctfl-certification/learn/lecture/27654800#overview
-# Link tutorials: https://markdown-it.github.io/
+### Groovy Fundamentals For Testers - Step By Step: https://bosch-bgsv.udemy.com/course/groovy-fundamentals-for-testers-step-by-step/learn/lecture/10301538#overview
+### Test Foundations: https://bosch-bgsv.udemy.com/course/test-automation-foundations/learn/lecture/31350050#overview
+### ISTQB Foundation Level preparation course+1000quiz examples: https://bosch-bgsv.udemy.com/course/istqb-foundation-level-ctfl-certification/learn/lecture/27654800#overview
+### Link tutorials: https://markdown-it.github.io/
