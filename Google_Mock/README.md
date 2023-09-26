@@ -389,11 +389,21 @@ ACTION(ThrowSomeException){
 EXPECT_CALL(object, someMethod()).WillOnce(ThrowSomeException());
 ```
 Then after on call or expect call, invoke that action by using will once will repeatedly will by default.
-###### Setting an action/return value:
+Setting an action/return value:
 * WillOnce
 * WillRepeatedly
 * WillByDefault
 * Return
-* returnRef 
+* returnRef
+###### return Example:
+```c++
+EXPECT_CALL(object, someMethod()).WillRepeatedly(Return(6));
+```
 ### [Cardinality](https://github.com/markdown-it/markdown-it-emoji)
-
+Expected number of calls:
+* `AnyNumber()`: If you don't care how many times the method was called
+* AtLeast(n)
+* AtMost(n)
+* Between(m, n)
+* "Exactly(n)" or "n"
+  
