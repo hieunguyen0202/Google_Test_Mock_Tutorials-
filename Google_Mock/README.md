@@ -365,7 +365,17 @@ It specifies what happens when a method gets called
 ###### ON_CALL `VS` EXPECT_CALL
 ```c++
 ON_CALL: sets  the behaviour when a method gets called
-EXPECT_CALL = 
+EXPECT_CALL = ON_CALL + expectations
+```
+* (the method will get called, with what args, etc.)
+#### For example:
+###### Check the number of calls:
+```c++
+EXPECT_CALL(someObject, someMethod).Times(2);
+```
+###### Check the agrument:
+```c++
+EXPECT_CALL(someObject, someMethod("Value I expect to be passed"));
 ```
 ### [Setting Behaviour](https://github.com/markdown-it/markdown-it-emoji)
 ### [Cardinality](https://github.com/markdown-it/markdown-it-emoji)
