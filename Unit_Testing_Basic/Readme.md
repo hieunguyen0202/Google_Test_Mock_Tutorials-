@@ -177,3 +177,59 @@ int main(int argc, char **argv)
 }
 
 ```
+
+## Assertions on Exception (Code Example)
+### [LibraryCode.hpp](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+#pragma once
+
+double mySqrt(double input);
+```
+### [LibraryCode.cpp](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+#include "LibraryCode.hpp"
+#include <cmath>
+#include <stdexcept>
+#include <iostream>
+
+double mySqrt(double input)
+{
+    if(input < 0)
+    {
+        std::cout << "Exception thrown\n";
+        throw std::runtime_error("Negative argument");
+    }
+    std::cout << "No exception thrown\n";
+    return sqrt(input);
+}
+```
+### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+#include <iostream>
+#include <gtest/gtest.h>
+#include "LibraryCode.hpp"
+
+TEST(SquareRootTest, NegativeArgumentTest)
+{
+    double inputValue = -9;
+
+    //ASSERT_ANY_THROW(mySqrt(inputValue));
+    ASSERT_THROW(mySqrt(inputValue), std::runtime_error);
+}
+
+
+TEST(SquareRootTest, PositiveArgumentTest)
+{
+    double inputValue = 9;
+
+    ASSERT_NO_THROW(mySqrt(inputValue));
+}
+
+int main(int argc, char **argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+```
+
+
