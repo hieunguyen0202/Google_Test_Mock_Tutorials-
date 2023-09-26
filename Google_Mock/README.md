@@ -447,3 +447,48 @@ TEST(TestEmployeeManager, TestUpdateSalary)
     employeeManager.setSalary(50, 6000);
 }
 ```
+
+## Mocking - Returns (Code Example)
+### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+class MockDatabaseConnection : public IDatabaseConnection
+{
+public:
+    MockDatabaseConnection(std::string serverAddress);
+    MOCK_METHOD(void, connect, ());
+    MOCK_METHOD(void, disconnect, ());
+    MOCK_METHOD(float, getSalary, (int), (const));
+    MOCK_METHOD(void, updateSalary, (int, float) );
+
+    MOCK_METHOD(std::vector<Employee>, getSalariesRange, (float), (const));
+    MOCK_METHOD(std::vector<Employee>, getSalariesRange, (float, float), (const));
+};
+MockDatabaseConnection::MockDatabaseConnection(std::string serverAddress) : IDatabaseConnection(serverAddress)
+{
+
+}
+
+TEST(TestEmployeeManager, TestConnection)
+{
+    MockDatabaseConnection dbConnection("dummyConnection");
+    EXPECT_CALL(dbConnection, connect());
+    EXPECT_CALL(dbConnection, disconnect());
+    EmployeeManager employeeManager(&dbConnection);
+}
+
+TEST(TestEmployeeManager, TestGetSalary)
+{
+    const int employeeId = 50;
+    const float salary = 6100.0;
+    MockDatabaseConnection dbConnection("dummyConnection");
+    EXPECT_CALL(dbConnection, connect());
+    EXPECT_CALL(dbConnection, disconnect());
+    EXPECT_CALL(dbConnection, getSalary(testing::_)).Times(1).WillOnce(testing::Return(salary));
+
+    EmployeeManager employeeManager(&dbConnection);
+
+    float returnedSalary = employeeManager.getSalary(employeeId);
+
+    ASSERT_EQ(salary, returnedSalary);
+}
+``` 
