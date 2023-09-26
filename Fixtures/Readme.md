@@ -174,3 +174,22 @@ int main(int argc, char **argv)
 }
 
 ```
+## Fixture Flow
+* First, the fixture is created so the constructor gets called
+* Next, `SetUp` is called and then the actual test body is called
+* After that, `TearDown` is called and finally the fixture gets destroyed
+* So, the destructor gets called
+
+### Why do we need to use constructor and destructor ?
+* const
+* Because you may forget to explicity call `SetUp` and `TearDown`
+### Wrong write Setup instead of SetUp
+If you spell it incorrectly, the actual method is not overridden and it is not called autimatically
+To avoid such a mistake, use the `override` keyword available with c++ 11 and onward 
+
+### Why do we need to use `SetUp` and `TearDown` ?
+* When you must call virtual methods
+* If you call a virtual method in the contructor, the call is not polymorphysim, so the base method will always get called.
+* Do not use fatal assertions (ASSERT_*) in contructors - instead of be used in `SetUp`
+* Do not call code that can throw exceptions in the destructor, instead of be used in `TearDown`
+* If an exception is thrown in the destructor, this can result in undefined behaviour or even crashes
