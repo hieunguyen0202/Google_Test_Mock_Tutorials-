@@ -45,4 +45,15 @@ MOCK_METHOD((std::map<int, int>), foo, (float));
 void doSomething() const;
 MOCK_METHOD((void, doSomething, (),(const));
 ```
+### [Legacy way](https://github.com/markdown-it/markdown-it-emoji)
+There used to be a set of macros called mock method, followed by the number of arguments the method
+#### Syntax:
+###### MOCK_METHOD`n`(MethodName, ReturnType(paramType1, paramType2...));
+```
+int sum(int a, int b);
+MOCK_METHOD`2`(sum, int(int, int));
+void doSomething();
+MOCK_METHOD`0`(doSomething, void());
+```
+
 
