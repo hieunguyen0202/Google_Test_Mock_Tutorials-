@@ -297,3 +297,30 @@ int main(int argc, char **argv)
  return RUN_ALL_TESTS();
 }
 ```
+## Mocking Methods - Current Way(Code example)
+### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+class MockDatabaseConnection : public IDatabaseConnection
+{
+public:
+    MockDatabaseConnection(std::string serverAddress);
+    MOCK_METHOD(void, connect, ());
+    MOCK_METHOD(void, disconnect, ());
+
+};
+MockDatabaseConnection::MockDatabaseConnection(std::string serverAddress) : IDatabaseConnection(serverAddress)
+{
+
+}
+
+TEST(TestEmployeeManager, TestConnection)
+{
+    MockDatabaseConnection dbConnection("dummyConnection");
+    EXPECT_CALL(dbConnection, connect());
+    EXPECT_CALL(dbConnection, disconnect());
+    EmployeeManager employeeManager(&dbConnection);
+}
+
+```
+
+
