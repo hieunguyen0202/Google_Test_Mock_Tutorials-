@@ -327,5 +327,34 @@ TEST(TestEmployeeManager, TestConnection)
 }
 
 ```
+## Mocking Methods - Legacy Way(Code example)
+### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+class MockDatabaseConnection : public IDatabaseConnection
+{
+public:
+    MockDatabaseConnection(std::string serverAddress);
+    MOCK_METHOD0(connect, void());
+    MOCK_METHOD0(disconnect, void());
 
+    MOCK_CONST_METHOD1(getSalary, float(int));
+    MOCK_METHOD2(updateSalary, void(int, float) );
 
+    MOCK_CONST_METHOD1(getSalariesRange, std::vector<Employee>(float));
+    MOCK_CONST_METHOD2(getSalariesRange, std::vector<Employee>(float, float));
+
+};
+MockDatabaseConnection::MockDatabaseConnection(std::string serverAddress) : IDatabaseConnection(serverAddress)
+{
+
+}
+
+TEST(TestEmployeeManager, TestConnection)
+{
+    MockDatabaseConnection dbConnection("dummyConnection");
+    EXPECT_CALL(dbConnection, connect());
+    EXPECT_CALL(dbConnection, disconnect());
+    EmployeeManager employeeManager(&dbConnection);
+}
+
+```
