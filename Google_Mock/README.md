@@ -388,5 +388,12 @@ ACTION(ThrowSomeException){
 }
 EXPECT_CALL(object, someMethod()).WillOnce(ThrowSomeException());
 ```
+Then after on call or expect call, invoke that action by using will once will repeatedly will by default.
+###### Setting an action/return value:
+* WillOnce
+* WillRepeatedly
+* WillByDefault
+* Return
+* returnRef 
 ### [Cardinality](https://github.com/markdown-it/markdown-it-emoji)
 
