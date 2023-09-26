@@ -25,10 +25,16 @@ If you are testing a class that does some database operations, you don't want to
 ### [Current way](https://github.com/markdown-it/markdown-it-emoji)
 Instead of refefining the methods that you want to override, you just have to use the mock method.
 #### Syntax:
+
+###### MOCK_METHOD(ReturnType, MethodName, (Arguments...))
 ```
-##### MOCK_METHOD(ReturnType, MethodName, (Arguments...))
 int sum(int a, int b);
 MOCK_METHOD(int, sum, (int, int));
+```
+###### Complex Types
+```
+std::map<int, int> foo(float x);
+MOCK_METHOD((std::map<int, int>), foo, (float));
 ```
 
 
