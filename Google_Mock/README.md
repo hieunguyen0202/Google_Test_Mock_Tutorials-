@@ -55,5 +55,10 @@ MOCK_METHOD2(sum, int(int, int));
 void doSomething();
 MOCK_METHOD0(doSomething, void());
 ```
+###### MOCK_CONST_METHOD`n`
+```
+int sum(int a, int b) const;
+MOCK_CONST_METHOD2(sum, int(int, int));
 
+```
 
