@@ -406,4 +406,44 @@ Expected number of calls:
 * AtMost(n)
 * Between(m, n)
 * "Exactly(n)" or "n"
-  
+## Mocking - Times (Code Example)
+### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
+```c++
+class MockDatabaseConnection : public IDatabaseConnection
+{
+public:
+    MockDatabaseConnection(std::string serverAddress);
+    MOCK_METHOD(void, connect, ());
+    MOCK_METHOD(void, disconnect, ());
+    MOCK_METHOD(float, getSalary, (int), (const));
+    MOCK_METHOD(void, updateSalary, (int, float) );
+
+    MOCK_METHOD(std::vector<Employee>, getSalariesRange, (float), (const));
+    MOCK_METHOD(std::vector<Employee>, getSalariesRange, (float, float), (const));
+};
+MockDatabaseConnection::MockDatabaseConnection(std::string serverAddress) : IDatabaseConnection(serverAddress)
+{
+
+}
+
+TEST(TestEmployeeManager, TestConnection)
+{
+    MockDatabaseConnection dbConnection("dummyConnection");
+    EXPECT_CALL(dbConnection, connect());
+    EXPECT_CALL(dbConnection, disconnect());
+    EmployeeManager employeeManager(&dbConnection);
+}
+
+TEST(TestEmployeeManager, TestUpdateSalary)
+{
+    MockDatabaseConnection dbConnection("dummyConnection");
+    EXPECT_CALL(dbConnection, connect());
+    EXPECT_CALL(dbConnection, disconnect());
+    EXPECT_CALL(dbConnection, updateSalary(50, 6000)).Times(1);   
+    //EXPECT_CALL(dbConnection, updateSalary(testing::_, testing::_)).Times(1);   
+
+    EmployeeManager employeeManager(&dbConnection);
+
+    employeeManager.setSalary(50, 6000);
+}
+```
