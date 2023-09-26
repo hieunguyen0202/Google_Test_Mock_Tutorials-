@@ -226,6 +226,79 @@ private:
 };
 ```
 ### [testRunner.cpp](https://github.com/markdown-it/markdown-it-emoji)
+
+#### Basic in Range
+```c++
+#include <iostream>
+#include <gtest/gtest.h>
+#include "LibraryCode.hpp"
+// Validator(5, 10)
+// 4, 5, 6, 7, 9, 10, 11 
+
+class ValidatorFixture : public testing::TestWithParam<int>
+{
+public:
+protected:
+ Validator mValidator{5, 10};
+};
+
+TEST_P(ValidatorFixture, TestInRange)
+{
+  std::tuple<int, bool> tuple = GetParam();
+
+  int param = GetParam();
+  bool isInside = mValidator.inRange(param);
+
+  ASSERT_EQ(isInside);
+}
+
+INSTANTIATE_TEST_CASE_P(InRangeTrue, ValidatorFixture, testing::Values(5,6,7,9,10));
+
+int main(int argc, char **argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+
+```
+#### Basic not in Range
+```c++
+#include <iostream>
+#include <gtest/gtest.h>
+#include "LibraryCode.hpp"
+// Validator(5, 10)
+// 4, 5, 6, 7, 9, 10, 11 
+
+class ValidatorFixture : public testing::TestWithParam<int>
+{
+public:
+protected:
+ Validator mValidator{5, 10};
+};
+
+TEST_P(ValidatorFixture, TestNotInRange)
+{
+  std::tuple<int, bool> tuple = GetParam();
+
+  int param = GetParam();
+  std::cout << "Param (not in range = " << param << std::endl;
+  bool isInside = mValidator.inRange(param);
+
+  ASSERT_EQ(isInside);
+}
+
+INSTANTIATE_TEST_CASE_P(InRangeFalse, ValidatorNegativeFixture, testing::Values(-11,40,4,11));
+
+int main(int argc, char **argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+
+```
+
+
+#### Advanced
 ```c++
 #include <iostream>
 #include <gtest/gtest.h>
